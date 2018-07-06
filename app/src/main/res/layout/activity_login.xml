@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.godlife.followup.Login">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/padding_right"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
+        android:paddingStart="@dimen/padding_left">
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="Login"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etLoginEmail"
+            style="@style/FormTextAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border"
+            android:drawableEnd="@drawable/ic_email"
+            android:drawablePadding="@dimen/margin_right"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/black_overlay" />
+
+        <EditText
+            android:id="@+id/etLoginPassword"
+            style="@style/FormTextAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border"
+            android:drawableEnd="@drawable/lock"
+            android:drawablePadding="@dimen/margin_right"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/black_overlay" />
+
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:text="Login"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvRestPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Forgot Password? Click Here"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

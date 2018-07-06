@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.godlife.followup.church_members.AddMembers">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/ib_person_image"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_image"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_text"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_person_name"
+                android:hint="@string/names"
+                android:inputType="textCapWords"
+                android:imeOptions="actionNext"
+
+                />
+            <Spinner
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/et_person_name"
+                android:background="@drawable/border_text"
+                android:id="@+id/gender"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:entries="@array/gender"/>
+            <EditText
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_text"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_person_address"
+                android:hint="@string/address"
+                android:inputType="textCapSentences"
+                android:imeOptions="actionNext"
+                android:layout_below="@id/et_person_dob"
+                />
+            <EditText
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_text"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_person_email"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
+                android:layout_below="@+id/et_person_address"
+                />
+            <EditText
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_text"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_person_phone"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:imeOptions="actionNext"
+                android:layout_below="@+id/et_person_email"
+                />
+
+
+            <EditText
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/border_text"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_person_dob"
+                android:hint="@string/dob"
+                android:inputType="text"
+                android:ems="8"
+                android:imeOptions="actionNext"
+                android:layout_toRightOf="@id/gender"
+                android:layout_below="@+id/et_person_name"
+                />
+
+            <EditText
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_text"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_person_occupation"
+                android:hint="@string/occupation"
+                android:inputType="textCapSentences"
+                android:ems="14"
+                android:imeOptions="actionNext"
+                android:layout_below="@+id/et_person_phone"
+                />
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_below="@id/et_person_occupation"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/border_text"
+                    android:id="@+id/marital_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:entries="@array/marital"/>
+                <EditText
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/border_text"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_person_nationality"
+                    android:hint="@string/nationality"
+                    android:inputType="textCapSentences"
+                    android:imeOptions="actionNext"
+                   />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_below="@+id/ll1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_text"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_person_stateOfOrigin"
+                    android:entries="@array/soo"
+                    android:fontFamily="casual"
+                    />
+                <Spinner
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/border_text"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/locations"
+                    android:id="@+id/et_person_location"
+                    />
+            </LinearLayout>
+
+
+
+            <Button
+                android:layout_below="@+id/ll2"
+                android:id="@+id/submit_button"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/blue"
+                android:background="@drawable/border_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Submit Form"/>
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</ScrollView>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "787476139514",
+    "firebase_url": "https://follow-up-55386.firebaseio.com",
+    "project_id": "follow-up-55386",
+    "storage_bucket": "follow-up-55386.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787476139514:android:ef9972ade5fbb23e",
+        "android_client_info": {
+          "package_name": "com.godlife.followup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787476139514-junh7vkgq2s09d0nve2orkguin4aac5s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.godlife.followup",
+            "certificate_hash": "ddd41d1ef153c4939a3bc05d68ceff404439546b"
+          }
+        },
+        {
+          "client_id": "787476139514-nocr4raa4mts0aun51p0i5n1g2u5i1ri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSSplqFFI2UXxic88d1AXrdeJXK91xtLs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787476139514-nocr4raa4mts0aun51p0i5n1g2u5i1ri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
