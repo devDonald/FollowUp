@@ -2,8 +2,10 @@ package com.godlife.followup.church_members;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,6 +24,9 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.valdesekamdem.library.mdtoast.MDToast;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class AddMembers extends AppCompatActivity {
 
@@ -150,28 +155,60 @@ public class AddMembers extends AppCompatActivity {
 
                     mProgress.show();
                     StorageReference filePath = membersStorage.child("images").child(imageUri.getLastPathSegment());
-                    filePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Uri downloadUri = taskSnapshot.getDownloadUrl();
-                            id = membersReference.push().getKey();
-                            MembersModel members = new MembersModel(name,dob,gender,address, email, phone,
-                                    marital_status, occupation,nationality,state,location);
-                            membersReference.child(id).setValue(members);
-                            membersReference.child(id).child("image").setValue(downloadUri.toString());
+                    try {
+                        Bitmap bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bmp.compress(Bitmap.CompressFormat.JPEG, 10, baos);
+                        byte[] data = baos.toByteArray();
+                        filePath.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                Uri downloadUri = taskSnapshot.getDownloadUrl();
+                                id = membersReference.push().getKey();
+                                MembersModel members = new MembersModel(name,dob,gender,address, email, phone,
+                                        marital_status, occupation,nationality,state,location);
+                                membersReference.child(id).setValue(members);
+                                membersReference.child(id).child("image").setValue(downloadUri.toString());
 
-                            MDToast mdToast = MDToast.makeText(getApplicationContext(),
-                                    "Member added successfully!",
-                                    MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS);
-                            mdToast.show();
-                            mProgress.dismiss();
-                            Intent payIntent = new Intent(AddMembers.this, Members.class);
-                            payIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                                    Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(payIntent);
+                                MDToast mdToast = MDToast.makeText(getApplicationContext(),
+                                        "Member added successfully!",
+                                        MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS);
+                                mdToast.show();
+                                mProgress.dismiss();
+                                Intent payIntent = new Intent(AddMembers.this, Members.class);
+                                payIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(payIntent);
+                            }
+                        });
 
-                        }
-                    });
+
+                    } catch (IOException e){
+                        e.getMessage();
+                    }
+
+//                    filePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                            Uri downloadUri = taskSnapshot.getDownloadUrl();
+//                            id = membersReference.push().getKey();
+//                            MembersModel members = new MembersModel(name,dob,gender,address, email, phone,
+//                                    marital_status, occupation,nationality,state,location);
+//                            membersReference.child(id).setValue(members);
+//                            membersReference.child(id).child("image").setValue(downloadUri.toString());
+//
+//                            MDToast mdToast = MDToast.makeText(getApplicationContext(),
+//                                    "Member added successfully!",
+//                                    MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS);
+//                            mdToast.show();
+//                            mProgress.dismiss();
+//                            Intent payIntent = new Intent(AddMembers.this, Members.class);
+//                            payIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+//                                    Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            startActivity(payIntent);
+//
+//                        }
+//                    });
 
                 }
 

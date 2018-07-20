@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">God-Life Follow Up</string>
+    <string name="app_name">Follow Up</string>
     <string name="prompt_email">Email</string>
     <string name="password_hint">Password</string>
     <string name="sign_up_text">Don\'t Have an account yet? Sign up here!</string>
@@ -112,6 +112,10 @@
         <item>Zarmaganda</item>
     </string-array>
 
+    <string-array name="options">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 
     <string name="password_recovery">Recover your password</string>
     <string name="hint_email">Email</string>
@@ -120,5 +124,10 @@
     <string name="reset_message">We have sent you instructions to reset your password!</string>
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="search">Search here</string>
+    <string name="title_activity_reports">Reports</string>
+    <string name="bag">Born Again?</string>
+    <string name="fwh">Filled with Holy Ghost?</string>
+    <string name="now_member">Now a Member?</string>
+    <string name="follower">Follow-Up Supervisor</string>
 
 </resources>

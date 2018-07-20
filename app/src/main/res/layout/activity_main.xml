@@ -64,6 +64,7 @@
                     android:layout_marginLeft="25dp"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:contentDescription="person image"
                     android:src="@drawable/members"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -168,6 +169,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:contentDescription="Location"
                     android:layout_marginLeft="35dp"
                     android:layout_width="50dp"
                     android:layout_height="45dp"

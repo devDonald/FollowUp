@@ -17,9 +17,6 @@ import com.godlife.followup.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.squareup.picasso.Picasso;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SearchMember extends AppCompatActivity {
 
@@ -97,10 +94,6 @@ public class SearchMember extends AppCompatActivity {
             TextView occupations= mView.findViewById(R.id.tv_searchperson_occupation);
             occupations.setText(occupation);
         }
-        public void setImage(Context ctx, String image){
-            CircleImageView imageView = mView.findViewById(R.id.im_searchperson_pics);
-            Picasso.with(ctx).load(image).into(imageView);
-        }
 
         private AllMembersViewHolder.ClickListener mClickListener;
 
@@ -132,8 +125,6 @@ public class SearchMember extends AppCompatActivity {
                 viewHolder.setLocation(model.getLocation());
                 viewHolder.setMarital(model.getMarital());
                 viewHolder.setOccupation(model.getOccupation());
-                viewHolder.setImage(getApplicationContext(),model.getImage());
-
             }
 
             @Override

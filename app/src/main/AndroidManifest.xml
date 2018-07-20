@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".validators.MyApplicationClass"
@@ -16,23 +17,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Login">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+
+        </activity>
         <activity
-
             android:name=".church_members.Members"
-            android:launchMode="singleTop"
-            android:label="@string/title_activity_members" />
-
+            android:label="@string/title_activity_members"
+            />
         <activity android:name=".church_members.AddMembers" />
         <activity
             android:name=".church_members.FullDetails"
-            android:label="Member Full Details"></activity>
+            android:label="Member Full Details" />
         <activity
             android:name=".church_members.UpdateMember"
             android:label="Update Member" />
@@ -49,7 +51,13 @@
             android:name=".ResetPassword"
             android:label="Reset Password" />
         <activity android:name=".church_members.SearchMember" />
-        <activity android:name=".church_members.GetLocation"></activity>
+        <activity android:name=".church_members.GetLocation" />
+        <activity
+            android:name=".reports.Reports"
+            android:label="@string/title_activity_reports"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".first_timers.AddFirstTimers" />
+        <activity android:name=".reports.AddReports"></activity>
     </application>
 
 </manifest>

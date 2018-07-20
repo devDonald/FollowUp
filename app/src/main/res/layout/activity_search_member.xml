@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:contentDescription="search Image"
             android:background="@android:color/background_light"
             app:srcCompat="@mipmap/search_button" />
 

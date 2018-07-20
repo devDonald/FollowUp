@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical"
+    android:background="@drawable/border_text"
+    android:layout_margin="5dp"
     tools:context="com.godlife.followup.church_members.FullDetails">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,6 +23,7 @@
             android:layout_below="@id/iv_fulldetails_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             >
 
             <TextView
@@ -160,6 +163,7 @@
                 android:ems="5"
                 android:layout_below="@+id/tv_fulldetails_marital_status"
                 android:layout_toRightOf="@id/tv_fulldetails_stateOfOrigin"
+
                 />
 
 

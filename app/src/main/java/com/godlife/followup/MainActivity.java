@@ -7,10 +7,12 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 
 import com.godlife.followup.church_members.Members;
+import com.godlife.followup.first_timers.FirstTimers;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private CardView churchMembers, two, three, four, five, exit;
+    private CardView churchMembers, firstTimers, reports, location, birthdays,
+            forum, gender, exit;
     private FirebaseAuth mAuth;
 
 
@@ -30,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent one = new Intent(MainActivity.this, Members.class);
                 startActivity(one);
+            }
+        });
+
+        firstTimers =findViewById(R.id.card2);
+        firstTimers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent two = new Intent(MainActivity.this, FirstTimers.class);
+                startActivity(two);
             }
         });
 

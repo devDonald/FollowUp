@@ -47,7 +47,7 @@ public class UpdateMember extends AppCompatActivity {
     private DatabaseReference membersReference;
     private String id;
     private StorageReference membersStorage;
-    private static final int GALLERY_REQUEST =78;
+    private static final int GALLERY_REQUEST =70;
     private static final int CAMERA_REQUEST_CODE = 1;
     private Uri imageUri =null;
     private ProgressDialog mProgress;

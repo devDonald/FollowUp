@@ -18,9 +18,6 @@ import com.godlife.followup.MainActivity;
 import com.godlife.followup.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Members extends AppCompatActivity {
     private RecyclerView allmembers_RV;
@@ -94,10 +91,6 @@ public class Members extends AppCompatActivity {
             TextView occupations= mView.findViewById(R.id.tv_listperson_occupation);
             occupations.setText(occupation);
         }
-        public void setImage(Context ctx, String image){
-            CircleImageView imageView = mView.findViewById(R.id.im_listperson_pics);
-            Picasso.with(ctx).load(image).into(imageView);
-        }
 
         private AllMembersViewHolder.ClickListener mClickListener;
 
@@ -128,8 +121,6 @@ public class Members extends AppCompatActivity {
                 viewHolder.setLocation(model.getLocation());
                 viewHolder.setMarital(model.getMarital());
                 viewHolder.setOccupation(model.getOccupation());
-                viewHolder.setImage(getApplicationContext(),model.getImage());
-
             }
 
             @Override
