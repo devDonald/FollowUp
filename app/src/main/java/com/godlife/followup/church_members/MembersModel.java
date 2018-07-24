@@ -5,8 +5,8 @@ package com.godlife.followup.church_members;
  */
 
 public class MembersModel {
-    String name,dob,gender,address, email, phone, marital, occupation,nationality;
-    String stateOfOrigin, location, image;
+    private String name,dob,gender,address, email, phone, marital, occupation,nationality;
+    private String stateOfOrigin, location, image;
 
     public MembersModel() {
     }

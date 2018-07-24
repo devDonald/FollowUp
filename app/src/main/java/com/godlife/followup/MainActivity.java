@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 
+import com.godlife.followup.church_members.GetGender;
+import com.godlife.followup.church_members.GetLocation;
 import com.godlife.followup.church_members.Members;
 import com.godlife.followup.first_timers.FirstTimers;
+import com.godlife.followup.reports.Reports;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,6 +47,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        reports = findViewById(R.id.card3);
+        reports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent three = new Intent(MainActivity.this, Reports.class);
+                startActivity(three);
+            }
+        });
+        location = findViewById(R.id.card4);
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent four = new Intent(MainActivity.this, GetLocation.class);
+                startActivity(four);
+            }
+        });
+
+        gender = findViewById(R.id.card7);
+        gender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent seven = new Intent(MainActivity.this, GetGender.class);
+                startActivity(seven);
+            }
+        });
         exit= findViewById(R.id.card8);
 
         exit.setOnClickListener(new View.OnClickListener() {

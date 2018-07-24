@@ -1,5 +1,8 @@
 package com.godlife.followup.church_members;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -27,6 +31,7 @@ import com.valdesekamdem.library.mdtoast.MDToast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class AddMembers extends AppCompatActivity {
 
@@ -52,6 +57,8 @@ public class AddMembers extends AppCompatActivity {
     private static final int CAMERA_REQUEST_CODE = 1;
     private Uri imageUri =null;
     private ProgressDialog mProgress;
+    private int mYear, mMonth, mDay;
+    private Activity mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +67,7 @@ public class AddMembers extends AppCompatActivity {
         getSupportActionBar().setTitle("Add Members");
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
+        mContext = this;
         uname= findViewById(R.id.et_person_name);
         udob= findViewById(R.id.et_person_dob);
         ugender= findViewById(R.id.gender);
@@ -74,6 +82,27 @@ public class AddMembers extends AppCompatActivity {
         submitButton= findViewById(R.id.submit_button);
 
         member_image= findViewById(R.id.ib_person_image);
+
+        udob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddMembers.this,
+                        AlertDialog.THEME_DEVICE_DEFAULT_DARK,
+                        new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        udob.setText(dayOfMonth+ "-"+ (monthOfYear + 1)+ "-"+ year);
+                    }
+                }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+
+            }
+        });
 
         member_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +138,8 @@ public class AddMembers extends AppCompatActivity {
                         ustateOfOrigin.getSelectedItemPosition()).toString().trim();
                 final String location=ulocation.getItemAtPosition(
                         ulocation.getSelectedItemPosition()).toString().trim();
+//                final String church_unit=mChurchUnit.getItemAtPosition(
+//                        mChurchUnit.getSelectedItemPosition()).toString().trim();
 
                 if (TextUtils.isEmpty(name)){
                     MDToast.makeText(AddMembers.this,"Name field cannot be Empty",
@@ -147,7 +178,8 @@ public class AddMembers extends AppCompatActivity {
                     MDToast.makeText(AddMembers.this," Pls Select a valid gender",
                             MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
 
-                }else if (marital_status.equalsIgnoreCase("Marital Status")){
+                }
+                else if (marital_status.equalsIgnoreCase("Marital Status")){
                     MDToast.makeText(AddMembers.this,"Pls Select a valid Marital Status",
                             MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
 
@@ -187,29 +219,6 @@ public class AddMembers extends AppCompatActivity {
                         e.getMessage();
                     }
 
-//                    filePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            Uri downloadUri = taskSnapshot.getDownloadUrl();
-//                            id = membersReference.push().getKey();
-//                            MembersModel members = new MembersModel(name,dob,gender,address, email, phone,
-//                                    marital_status, occupation,nationality,state,location);
-//                            membersReference.child(id).setValue(members);
-//                            membersReference.child(id).child("image").setValue(downloadUri.toString());
-//
-//                            MDToast mdToast = MDToast.makeText(getApplicationContext(),
-//                                    "Member added successfully!",
-//                                    MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS);
-//                            mdToast.show();
-//                            mProgress.dismiss();
-//                            Intent payIntent = new Intent(AddMembers.this, Members.class);
-//                            payIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-//                                    Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                            startActivity(payIntent);
-//
-//                        }
-//                    });
-
                 }
 
             }
@@ -242,4 +251,6 @@ public class AddMembers extends AppCompatActivity {
         super.onStart();
         unationality.setText("Nigerian");
     }
+
+
 }

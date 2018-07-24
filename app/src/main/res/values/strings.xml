@@ -27,6 +27,22 @@
         <item> Female</item>
 
     </string-array>
+    <string-array name="church_units">
+        <item>Follow-Up</item>
+        <item>Media</item>
+        <item>Protocol</item>
+        <item>Technical</item>
+        <item>Sanctuary</item>
+        <item>Scribes</item>
+        <item>Outreach</item>
+        <item>House of Judah</item>
+        <item>Beautification</item>
+        <item>Ushering</item>
+        <item>Children Dept</item>
+        <item>Treasury</item>
+        <item>None</item>
+
+    </string-array>
     <string-array name="marital">
         <item> Marital Status</item>
         <item> Single </item>
@@ -104,6 +120,7 @@
         <item>Polo</item>
         <item>Rantya</item>
         <item>Rayfield</item>
+        <item>Rukuba</item>
         <item>Rukuba Road</item>
         <item>State Lowcost</item>
         <item>Terminus</item>
@@ -129,5 +146,11 @@
     <string name="fwh">Filled with Holy Ghost?</string>
     <string name="now_member">Now a Member?</string>
     <string name="follower">Follow-Up Supervisor</string>
+    <string name="select_date">Select Date</string>
+    <string name="type_report">Report Content</string>
+    <string name="report_title">Report Title</string>
+    <string name="done">Done</string>
+    <string name="delete_report">Delete Report</string>
+    <string name="update_report">Update Report</string>
 
 </resources>

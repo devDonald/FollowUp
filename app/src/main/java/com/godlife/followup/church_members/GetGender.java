@@ -20,8 +20,7 @@ import com.google.firebase.database.Query;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 import com.valdesekamdem.library.mdtoast.MDToast;
 
-public class GetLocation extends AppCompatActivity {
-
+public class GetGender extends AppCompatActivity {
     private RecyclerView search_members_RV;
     private DatabaseReference membersDatabase;
     private Context context=getBaseContext();
@@ -30,24 +29,25 @@ public class GetLocation extends AppCompatActivity {
 
     private FirebaseRecyclerAdapter<MembersModel,AllMembersViewHolder> firebaseRecyclerAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_location);
+        setContentView(R.layout.activity_get_gender);
 
-        search_members_RV= findViewById(R.id.location_members_rvs);
+        search_members_RV= findViewById(R.id.gender_members_rvs);
         membersDatabase= FirebaseDatabase.getInstance().getReference().child("Members");
         search_members_RV.setHasFixedSize(true);
         search_members_RV.setLayoutManager(new LinearLayoutManager(context));
-        mSearchField = findViewById(R.id.location_search);
-        mSearchBtn = findViewById(R.id.location_search_btn);
+        mSearchField = findViewById(R.id.gender_search);
+        mSearchBtn = findViewById(R.id.gender_search_btn);
 
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String searchText = mSearchField.getItemAtPosition(mSearchField.getSelectedItemPosition()).toString();
-                if (searchText.equalsIgnoreCase("Location Tag")){
-                    MDToast.makeText(GetLocation.this,"Select a valid location",
+                if (searchText.equalsIgnoreCase("Gender")){
+                    MDToast.makeText(GetGender.this,"Select a gender",
                             MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
                 } else{
                     showMembers(searchText);
@@ -111,7 +111,7 @@ public class GetLocation extends AppCompatActivity {
 
     public void showMembers(String searchText){
 
-        Query firebaseSearchQuery = membersDatabase.orderByChild("location").startAt(searchText).endAt(searchText + "\uf8ff");
+        Query firebaseSearchQuery = membersDatabase.orderByChild("gender").startAt(searchText).endAt(searchText + "\uf8ff");
 
         firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<MembersModel, AllMembersViewHolder>(
                 MembersModel.class,
@@ -137,7 +137,7 @@ public class GetLocation extends AppCompatActivity {
 
                         //Toast.makeText(getApplicationContext(), "Item clicked at " + position, Toast.LENGTH_SHORT).show();
 
-                        Intent wholeProfile=new Intent(GetLocation.this,FullDetails.class);
+                        Intent wholeProfile=new Intent(GetGender.this,FullDetails.class);
                         wholeProfile.putExtra("position",firebaseRecyclerAdapter.getRef(position).getKey());
 
                         startActivity(wholeProfile);
@@ -156,7 +156,7 @@ public class GetLocation extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent ok = new Intent(GetLocation.this, MainActivity.class);
+        Intent ok = new Intent(GetGender.this, MainActivity.class);
         ok.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         ok.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         ok.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

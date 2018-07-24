@@ -36,16 +36,38 @@
                 android:imeOptions="actionNext"
 
                 />
-            <Spinner
+            <LinearLayout
+                android:id="@+id/ll_top"
+                android:layout_below="@id/et_person_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="10dp"
-                android:layout_below="@id/et_person_name"
-                android:background="@drawable/border_text"
-                android:id="@+id/gender"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                android:entries="@array/gender"/>
+                android:layout_marginRight="10dp"
+                >
+                <Spinner
+                    android:layout_below="@id/et_person_name"
+                    android:background="@drawable/border_text"
+                    android:id="@+id/gender"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:entries="@array/gender"/>
+                <EditText
+                    android:background="@drawable/border_text"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_person_dob"
+                    android:hint="@string/dob"
+                    android:ems="8"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:imeOptions="actionNext"
+                    />
+            </LinearLayout>
+
+
             <EditText
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
@@ -57,7 +79,7 @@
                 android:hint="@string/address"
                 android:inputType="textCapSentences"
                 android:imeOptions="actionNext"
-                android:layout_below="@id/et_person_dob"
+                android:layout_below="@id/ll_top"
                 />
             <EditText
                 android:layout_marginTop="8dp"
@@ -88,33 +110,17 @@
                 />
 
 
-            <EditText
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/border_text"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/et_person_dob"
-                android:hint="@string/dob"
-                android:inputType="text"
-                android:ems="8"
-                android:imeOptions="actionNext"
-                android:layout_toRightOf="@id/gender"
-                android:layout_below="@+id/et_person_name"
-                />
 
             <EditText
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/border_text"
                 android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/et_person_occupation"
                 android:hint="@string/occupation"
                 android:inputType="textCapSentences"
-                android:ems="14"
                 android:imeOptions="actionNext"
                 android:layout_below="@+id/et_person_phone"
                 />
@@ -131,7 +137,7 @@
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/border_text"
                     android:id="@+id/marital_status"
-                    android:layout_width="wrap_content"
+                    android:layout_width="145dp"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:entries="@array/marital"/>
@@ -141,7 +147,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/border_text"
                     android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="145dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/et_person_nationality"
                     android:hint="@string/nationality"
@@ -161,7 +167,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/border_text"
                     android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="145dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/et_person_stateOfOrigin"
                     android:entries="@array/soo"
@@ -172,7 +178,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/border_text"
                     android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="145dp"
                     android:layout_height="wrap_content"
                     android:entries="@array/locations"
                     android:id="@+id/et_person_location"

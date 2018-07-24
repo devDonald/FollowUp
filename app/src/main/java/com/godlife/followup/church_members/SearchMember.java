@@ -26,7 +26,7 @@ public class SearchMember extends AppCompatActivity {
     private EditText mSearchField;
     private ImageButton mSearchBtn;
 
-    FirebaseRecyclerAdapter<MembersModel,AllMembersViewHolder> firebaseRecyclerAdapter;
+    private FirebaseRecyclerAdapter<MembersModel,AllMembersViewHolder> firebaseRecyclerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

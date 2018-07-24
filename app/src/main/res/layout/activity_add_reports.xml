@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    android:background="@drawable/border_text"
     tools:context=".reports.AddReports">
+    <LinearLayout
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_text"
+            android:layout_marginBottom="8dp">
+            <EditText
+                android:id="@+id/report_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:hint="@string/report_title"
+                android:textColorHint="@color/black"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@drawable/border_text">
+            <EditText
+                android:id="@+id/report_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine|textCapSentences"
+                android:hint="@string/type_report"
+                android:textColorHint="@color/black"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:background="@drawable/border_text"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_reporter"
+                android:hint="Name of Reporter"
+                android:inputType="textCapWords"
+                />
+            <Button
+                android:id="@+id/pick_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_date"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>

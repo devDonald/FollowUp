@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".validators.MyApplicationClass"
@@ -16,48 +16,73 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
-
+        <activity android:name=".Login"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".church_members.Members"
             android:label="@string/title_activity_members"
-            />
-        <activity android:name=".church_members.AddMembers" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".church_members.AddMembers"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".church_members.FullDetails"
-            android:label="Member Full Details" />
+            android:label="Member Full Details"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".church_members.UpdateMember"
-            android:label="Update Member" />
+            android:label="Update Member"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".first_timers.FirstTimers"
             android:label="@string/title_activity_first_timers"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.godlife.followup.MainActivity" />
         </activity>
         <activity
             android:name=".ResetPassword"
-            android:label="Reset Password" />
-        <activity android:name=".church_members.SearchMember" />
-        <activity android:name=".church_members.GetLocation" />
+            android:label="Reset Password"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".church_members.SearchMember"
+            android:label="Search by Name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".church_members.GetLocation"
+            android:label="Search by Location"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".reports.Reports"
             android:label="@string/title_activity_reports"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".first_timers.AddFirstTimers" />
-        <activity android:name=".reports.AddReports"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".first_timers.AddFirstTimers"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".reports.AddReports"
+            android:label="Add a Report"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".church_members.GetGender"
+            android:label="Search by Gender"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".reports.ViewReport"
+            android:label="View Report"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".reports.UpdateReport"
+            android:label="Edit my Reports"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
