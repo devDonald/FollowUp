@@ -70,7 +70,7 @@ public class FullDetails extends AppCompatActivity {
 
                             MembersModel member = dataSnapshot.getValue(MembersModel.class);
                             uname.setText(member.getName());
-                            udob.setText(member.getDob());
+                            udob.setText("Date of Birth: "+member.getDob());
                             uaddress.setText(member.getAddress());
                             uemail.setText(member.getEmail());
                             ugender.setText(member.getGender());
@@ -79,7 +79,7 @@ public class FullDetails extends AppCompatActivity {
                             unationality.setText(member.getNationality());
                             uoccupation.setText(member.getOccupation());
                             uphone.setText(member.getPhone());
-                            ustateOfOrigin.setText(member.getStateOfOrigin());
+                            ustateOfOrigin.setText("State of Origin: "+member.getStateOfOrigin());
 
                         String profile_image = dataSnapshot.child("image").getValue(String.class);
                         Picasso.with(FullDetails.this).load(profile_image).into(imageView);

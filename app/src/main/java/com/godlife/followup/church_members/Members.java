@@ -18,6 +18,7 @@ import com.godlife.followup.MainActivity;
 import com.godlife.followup.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class Members extends AppCompatActivity {
     private RecyclerView allmembers_RV;
@@ -107,11 +108,13 @@ public class Members extends AppCompatActivity {
 
     public void showMembers(){
 
+        Query firebaseSearchQuery = allMembersReference.orderByChild("name");
+
         firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<MembersModel, AllMembersViewHolder>(
                 MembersModel.class,
                 R.layout.all_members_layout,
                 AllMembersViewHolder.class,
-                allMembersReference
+                firebaseSearchQuery
         ) {
 
             @Override

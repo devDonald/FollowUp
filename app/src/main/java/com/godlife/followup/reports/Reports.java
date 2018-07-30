@@ -60,41 +60,47 @@ public class Reports extends AppCompatActivity {
         });
     }
     public void fetchReports(){
-        firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<ReportModel, RecyclerAdapter>(
-                ReportModel.class,
-                R.layout.layout_all_reports,
-                RecyclerAdapter.class,
-                mReportssDatabase
-        ) {
-            @Override
-            protected void populateViewHolder(RecyclerAdapter viewHolder,ReportModel model, int position) {
-                viewHolder.setTitle(model.getTitle());
-                viewHolder.setReporter(model.getReporter());
-                viewHolder.setDate(model.getDate());
-            }
+        try {
+            firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<ReportModel, RecyclerAdapter>(
+                    ReportModel.class,
+                    R.layout.layout_all_reports,
+                    RecyclerAdapter.class,
+                    mReportssDatabase
+            ) {
+                @Override
+                protected void populateViewHolder(RecyclerAdapter viewHolder,ReportModel model, int position) {
+                    viewHolder.setTitle(model.getTitle());
+                    viewHolder.setReporter(model.getReporter());
+                    viewHolder.setDate(model.getDate());
+                }
 
-            @Override
-            public RecyclerAdapter onCreateViewHolder(ViewGroup parent, int viewType) {
-                RecyclerAdapter viewHolder = super.onCreateViewHolder(parent, viewType);
-                viewHolder.setOnClickListener(new RecyclerAdapter.ClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
+                @Override
+                public RecyclerAdapter onCreateViewHolder(ViewGroup parent, int viewType) {
+                    RecyclerAdapter viewHolder = super.onCreateViewHolder(parent, viewType);
+                    viewHolder.setOnClickListener(new RecyclerAdapter.ClickListener() {
+                        @Override
+                        public void onItemClick(View view, int position) {
 
-                        //Toast.makeText(getApplicationContext(), "Item clicked at " + position, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "Item clicked at " + position, Toast.LENGTH_SHORT).show();
 
-                        Intent wholeProfile=new Intent(Reports.this,ViewReport.class);
-                        wholeProfile.putExtra("position",firebaseRecyclerAdapter.getRef(position).getKey());
+                            Intent wholeProfile=new Intent(Reports.this,ViewReport.class);
+                            wholeProfile.putExtra("position",firebaseRecyclerAdapter.getRef(position).getKey());
 
-                        startActivity(wholeProfile);
+                            startActivity(wholeProfile);
 
-                    }
+                        }
 
-                });
+                    });
 
-                return viewHolder;
-            }
-        };
-        mReportsRecycler.setAdapter(firebaseRecyclerAdapter);
+                    return viewHolder;
+                }
+            };
+            mReportsRecycler.setAdapter(firebaseRecyclerAdapter);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @Override

@@ -39,7 +39,7 @@
                    android:layout_marginTop="8dp"
                    android:layout_marginLeft="10dp"
                    android:background="@drawable/border_text"
-                   android:id="@+id/first_gender"
+                   android:id="@+id/sp_first_gender"
                    android:layout_width="150dp"
                    android:layout_height="wrap_content"
                    android:imeOptions="actionNext"
@@ -53,8 +53,8 @@
                    android:layout_height="wrap_content"
                    android:id="@+id/et_first_dob"
                    android:hint="@string/dob"
-                   android:inputType="text"
-                   android:ems="8"
+                   android:clickable="true"
+                   android:focusable="false"
                    android:imeOptions="actionNext"
                    />
            </LinearLayout>
@@ -130,7 +130,7 @@
                 <Spinner
                     android:layout_marginTop="8dp"
                     android:background="@drawable/border_text"
-                    android:id="@+id/first_status"
+                    android:id="@+id/sp_first_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -148,7 +148,7 @@
                         android:hint="@string/bag"
                         />
                     <Spinner
-                        android:id="@+id/bornagain"
+                        android:id="@+id/sp_born_again"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -174,41 +174,19 @@
                     android:text="@string/fwh"
                     />
                 <Spinner
-                    android:id="@+id/filled_with_holyghost"
+                    android:id="@+id/sp_filled_with_holyghost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:entries="@array/options"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/border_text"
                 android:layout_below="@+id/ll3"
-                android:orientation="horizontal"
-                android:id="@+id/ll4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/now_member"
-                    />
-                <Spinner
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/now_member"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/options"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/border_text"
-                android:layout_below="@+id/ll4"
                 android:orientation="horizontal"
                 android:id="@+id/ll5"
                 android:layout_width="match_parent"
@@ -220,18 +198,32 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/follower"
+                        android:id="@+id/et_first_follower"
                         android:hint="@string/follower"
                         />
                 </android.support.design.widget.TextInputLayout>
 
 
             </LinearLayout>
+            <EditText
+                android:layout_below="@+id/ll5"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/border_text"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_first_dov"
+                android:hint="@string/dov"
+                android:clickable="true"
+                android:focusable="false"
+                android:imeOptions="actionNext"
+                />
 
 
             <Button
-                android:layout_below="@+id/ll5"
-                android:id="@+id/submit_button"
+                android:layout_below="@+id/et_first_dov"
+                android:id="@+id/first_submit"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
@@ -242,9 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="ADD"/>
-
-
+                android:text="Submit"/>
 
         </RelativeLayout>
     </LinearLayout>

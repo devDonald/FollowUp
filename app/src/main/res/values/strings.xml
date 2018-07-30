@@ -152,5 +152,6 @@
     <string name="done">Done</string>
     <string name="delete_report">Delete Report</string>
     <string name="update_report">Update Report</string>
+    <string name="dov">Date of Visit</string>
 
 </resources>
