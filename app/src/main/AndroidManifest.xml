@@ -89,7 +89,8 @@
             android:name=".reports.UpdateReport"
             android:label="Edit my Reports"
             android:screenOrientation="portrait" />
-        <activity android:name=".birthdays.Birthdays"></activity>
+        <activity android:name=".birthdays.Birthdays"
+            android:label="Birthdays"></activity>
     </application>
 
 </manifest>

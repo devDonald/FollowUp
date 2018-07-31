@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 
+import com.godlife.followup.birthdays.Birthdays;
 import com.godlife.followup.church_members.GetGender;
 import com.godlife.followup.church_members.GetLocation;
 import com.godlife.followup.church_members.Members;
@@ -61,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent four = new Intent(MainActivity.this, GetLocation.class);
                 startActivity(four);
+            }
+        });
+
+        birthdays = findViewById(R.id.card5);
+        birthdays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent five = new Intent(MainActivity.this, Birthdays.class);
+                startActivity(five);
             }
         });
 
