@@ -1,52 +1,82 @@
 {
   "project_info": {
-    "project_number": "787476139514",
-    "firebase_url": "https://follow-up-55386.firebaseio.com",
-    "project_id": "follow-up-55386",
-    "storage_bucket": "follow-up-55386.appspot.com"
+    "project_number": "319432935338",
+    "firebase_url": "https://god-life-assembly.firebaseio.com",
+    "project_id": "god-life-assembly",
+    "storage_bucket": "god-life-assembly.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:787476139514:android:ef9972ade5fbb23e",
+        "mobilesdk_app_id": "1:319432935338:android:0dde325f9ded7753054dd3",
+        "android_client_info": {
+          "package_name": "com.godlife.churchapp.godlifeassembly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319432935338-pga19dfna1o8n55n28g2tkouenjd7dcq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.godlife.churchapp.godlifeassembly",
+            "certificate_hash": "4bfb6d8ae367e89beec65950408a21d265181621"
+          }
+        },
+        {
+          "client_id": "319432935338-ghlup7sc8rg9ivnb2v8in4dt08c29hi7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX0SIPpI_6vQNOMSmUc8dvRKTskE4Ju1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319432935338-ghlup7sc8rg9ivnb2v8in4dt08c29hi7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319432935338:android:73af45ce3ad6b93e054dd3",
         "android_client_info": {
           "package_name": "com.godlife.followup"
         }
       },
       "oauth_client": [
         {
-          "client_id": "787476139514-junh7vkgq2s09d0nve2orkguin4aac5s.apps.googleusercontent.com",
+          "client_id": "319432935338-vcfaci3miq14sg0ea2m1evp1grq92l88.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.godlife.followup",
-            "certificate_hash": "ddd41d1ef153c4939a3bc05d68ceff404439546b"
+            "certificate_hash": "4bfb6d8ae367e89beec65950408a21d265181621"
           }
         },
         {
-          "client_id": "787476139514-nocr4raa4mts0aun51p0i5n1g2u5i1ri.apps.googleusercontent.com",
+          "client_id": "319432935338-ghlup7sc8rg9ivnb2v8in4dt08c29hi7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDSSplqFFI2UXxic88d1AXrdeJXK91xtLs"
+          "current_key": "AIzaSyCX0SIPpI_6vQNOMSmUc8dvRKTskE4Ju1I"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "787476139514-nocr4raa4mts0aun51p0i5n1g2u5i1ri.apps.googleusercontent.com",
+              "client_id": "319432935338-ghlup7sc8rg9ivnb2v8in4dt08c29hi7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

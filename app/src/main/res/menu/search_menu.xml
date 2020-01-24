@@ -6,6 +6,6 @@
         android:title="@string/member_search"
         android:icon="@drawable/search"
         android:orderInCategory="100"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
 </menu>

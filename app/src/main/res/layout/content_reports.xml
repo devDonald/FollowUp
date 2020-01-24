@@ -9,12 +9,12 @@
     android:layout_margin="8dp"
     tools:showIn="@layout/activity_reports">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/all_reports_recycler"
         >
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </ScrollView>

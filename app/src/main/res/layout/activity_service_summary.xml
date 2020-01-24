@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ServiceSummary">
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_marginTop="10dp"
+          android:background="@drawable/border"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          android:id="@+id/service_label_one"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Service Tag"
+          android:textColorHint="@android:color/holo_blue_dark"
+          >
+          <EditText
+              android:id="@+id/add_service_tag"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textAlignment="textStart"
+              android:padding="10dp"
+              android:inputType="textCapSentences"
+              android:imeOptions="actionNext"
+              />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_marginTop="5dp"
+          android:background="@drawable/border"
+          app:layout_constraintTop_toBottomOf="@id/service_label_one"
+          app:layout_constraintStart_toStartOf="@id/service_label_one"
+          app:layout_constraintEnd_toEndOf="@id/service_label_one"
+          android:id="@+id/service_label_two"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Service Nuggets"
+          android:textColorHint="@android:color/holo_blue_dark"
+          >
+          <EditText
+              android:id="@+id/service_action_point"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textAlignment="textStart"
+              android:padding="10dp"
+              android:lines="4"
+              android:inputType="textMultiLine|textCapSentences"
+              android:imeOptions="actionDone"
+              />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:background="@drawable/border"
+          app:layout_constraintTop_toBottomOf="@id/service_label_two"
+          app:layout_constraintEnd_toEndOf="@id/service_label_two"
+          app:layout_constraintStart_toStartOf="@id/service_label_two"
+          android:id="@+id/service_label_three"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Ministering"
+          android:textColorHint="@android:color/holo_blue_dark"
+          >
+          <EditText
+              android:id="@+id/service_minister"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textAlignment="textStart"
+              android:padding="10dp"
+              android:inputType="textCapWords"
+              android:imeOptions="actionNext"
+              />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+
+      <Button
+          android:layout_marginTop="20dp"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          app:layout_constraintTop_toBottomOf="@id/service_label_three"
+          app:layout_constraintStart_toStartOf="@id/service_label_three"
+          app:layout_constraintEnd_toEndOf="@id/service_label_three"
+          android:background="@drawable/button"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/submit_sevice_update"
+          android:text="Update Service"
+          android:textSize="20sp"
+          android:textStyle="bold"
+          android:textColor="@android:color/white"
+
+          />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

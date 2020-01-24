@@ -2,12 +2,12 @@ package com.godlife.followup.reports;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -83,10 +83,14 @@ public class Reports extends AppCompatActivity {
 
                             //Toast.makeText(getApplicationContext(), "Item clicked at " + position, Toast.LENGTH_SHORT).show();
 
-                            Intent wholeProfile=new Intent(Reports.this,ViewReport.class);
-                            wholeProfile.putExtra("position",firebaseRecyclerAdapter.getRef(position).getKey());
+                            try {
+                                Intent wholeProfile=new Intent(Reports.this,ViewReport.class);
+                                wholeProfile.putExtra("position",firebaseRecyclerAdapter.getRef(position).getKey());
 
-                            startActivity(wholeProfile);
+                                startActivity(wholeProfile);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
 
                         }
 
@@ -107,6 +111,11 @@ public class Reports extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        fetchReports();
+        try {
+            fetchReports();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

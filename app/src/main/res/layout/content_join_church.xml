@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.JoinChurch"
+    tools:showIn="@layout/activity_join_church">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="15dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        >
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/display_pimage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/dp"
+
+                />
+
+            <ImageButton
+                android:id="@+id/pick_p_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/display_pimage"
+                android:layout_alignEnd="@id/display_pimage"
+                android:layout_marginTop="-49dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/black"
+                android:src="@android:drawable/ic_menu_camera" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/label_first"
+                android:layout_below="@id/pick_p_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Surname"
+                android:textColorHint="@android:color/holo_blue_dark"
+                >
+                <EditText
+                    android:id="@+id/join_surname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_below="@id/label_first"
+                android:id="@+id/label_sec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First Name"
+                android:textColorHint="@android:color/holo_blue_dark"
+                >
+                <EditText
+                    android:id="@+id/join_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_below="@id/label_sec"
+                android:id="@+id/label_third"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Other Names"
+                android:textColorHint="@android:color/holo_blue_dark"
+                >
+                <EditText
+                    android:id="@+id/join_other_names"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <RadioGroup
+                android:layout_below="@id/label_third"
+                android:id="@+id/gender_group"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="8dp"
+                    android:layout_below="@id/label_third"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender:"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textStyle="bold"
+                    android:id="@+id/gender_select"
+                    />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gender_male"
+                    android:hint="Male"
+                    android:textColorHint="@android:color/holo_blue_dark"
+                    />
+
+                <RadioButton
+                    android:textColorHint="@android:color/holo_blue_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gender_female"
+                    android:hint="Female"
+                    />
+            </RadioGroup>
+            <RadioGroup
+                android:layout_below="@id/gender_group"
+                android:id="@+id/marital_group"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marital Status:"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textStyle="bold"
+                    android:id="@+id/marital_select"
+                    />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/single"
+                    android:hint="Single"
+                    android:textColorHint="@android:color/holo_blue_dark"
+                    />
+
+                <RadioButton
+                    android:textColorHint="@android:color/holo_blue_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/married"
+                    android:hint="Married"
+                    />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_below="@id/marital_group"
+                android:id="@+id/select_dob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date of Birth:"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textStyle="bold"
+                android:paddingTop="15dp"
+                android:paddingStart="8dp"
+
+                />
+
+            <Spinner
+                android:layout_marginStart="15dp"
+                android:paddingTop="15dp"
+                android:background="@color/white"
+                android:layout_below="@id/marital_group"
+                android:layout_toEndOf="@id/select_dob"
+                android:id="@+id/join_pick_date_day"
+                android:entries="@array/days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_blue_dark"
+
+                />
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:paddingTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:id="@+id/divider"
+                android:layout_below="@id/marital_group"
+                android:layout_toRightOf="@id/join_pick_date_day"
+                />
+            <Spinner
+                android:layout_marginStart="5dp"
+                android:paddingTop="15dp"
+                android:background="@color/white"
+                android:layout_below="@id/marital_group"
+                android:layout_toEndOf="@id/divider"
+                android:id="@+id/join_pick_date_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/months"
+                android:textColor="@android:color/holo_blue_dark"
+
+                />
+
+
+            <TextView
+                android:layout_below="@id/select_dob"
+                android:id="@+id/select_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nationality:"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:paddingStart="8dp"
+
+                />
+            <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                android:layout_below="@id/select_dob"
+                android:layout_marginTop="20dp"
+                android:id="@+id/ccp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_showFullName="true"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/select_country"
+                app:ccp_hidePhoneCode="true"
+                app:ccp_defaultNameCode="NG"  />
+
+            <Spinner
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/select_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/join_state"
+                android:entries="@array/soo"
+                />
+            <Spinner
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/select_country"
+                android:layout_toEndOf="@id/join_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/join_location"
+                android:entries="@array/locations"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/join_state"
+                android:id="@+id/label_fourth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:textColorHint="@android:color/holo_blue_dark"
+                >
+
+                <EditText
+                    android:id="@+id/join_phone_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:inputType="phone"
+                    android:imeOptions="actionNext"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_below="@id/label_fourth"
+                android:id="@+id/label_fifth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:textColorHint="@android:color/holo_blue_dark"
+                >
+                <EditText
+                    android:id="@+id/join_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:inputType="textCapSentences"
+                    android:imeOptions="actionNext"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_below="@id/label_fifth"
+                android:id="@+id/label_sixth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textColorHint="@android:color/holo_blue_dark"
+                >
+                <EditText
+                    android:id="@+id/join_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_below="@id/label_sixth"
+                android:id="@+id/label_seventh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Occupation"
+                android:layout_marginBottom="20dp"
+                android:textColorHint="@android:color/holo_blue_dark"
+                >
+                <EditText
+                    android:id="@+id/join_occupation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:padding="10dp"
+                    android:inputType="textCapSentences"
+                    android:imeOptions="actionNext"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</ScrollView>

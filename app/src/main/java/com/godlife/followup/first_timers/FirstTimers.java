@@ -3,11 +3,11 @@ package com.godlife.followup.first_timers;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -38,16 +38,6 @@ public class FirstTimers extends AppCompatActivity {
         first_timers_RV.setHasFixedSize(true);
         first_timers_RV.setLayoutManager(new LinearLayoutManager(context));
 
-        FloatingActionButton fab = findViewById(R.id.add_first_timers);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(FirstTimers.this,AddFirstTimers.class));
-
-            }
-        });
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

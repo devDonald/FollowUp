@@ -2,7 +2,7 @@ package com.godlife.followup.reports;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,13 +17,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import me.biubiubiu.justifytext.library.JustifyTextView;
+
 public class ViewReport extends AppCompatActivity {
     private static final String TAG = "ViewJournals";
     private DatabaseReference mReportsDatabase;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private String uID;
-    private TextView mTitle, mContent, mReporter, mDate;
+    private TextView mTitle, mReporter, mDate;
+    private JustifyTextView mContent;
     private String position;
     private String postUID;
 
@@ -33,7 +36,7 @@ public class ViewReport extends AppCompatActivity {
         setContentView(R.layout.activity_view_report);
 
         mTitle = (TextView)findViewById(R.id.report_full_title);
-        mContent = (TextView) findViewById(R.id.report_full_content);
+        mContent = (JustifyTextView) findViewById(R.id.report_full_content);
         mReporter = (TextView) findViewById(R.id.report_full_reporter);
         mDate = (TextView)findViewById(R.id.full_date);
 
@@ -43,37 +46,42 @@ public class ViewReport extends AppCompatActivity {
         mReportsDatabase = FirebaseDatabase.getInstance().getReference("Reports");
 
 
-        Bundle extras = getIntent().getExtras();
-        if (extras!=null) {
-            position = extras.getString("position");
-            if (position != null) {
-                DatabaseReference userRef = mReportsDatabase.child(position);
+        try {
+            Bundle extras = getIntent().getExtras();
+            if (extras!=null) {
+                position = extras.getString("position");
+                if (position != null) {
+                    DatabaseReference userRef = mReportsDatabase.child(position);
 
-                Log.d("userref", "" + userRef);
-                ValueEventListener valueEventListener = new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Log.d("ds",""+ds);
+                    Log.d("userref", "" + userRef);
+                    ValueEventListener valueEventListener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // Log.d("ds",""+ds);
 
-                        mTitle.setText(dataSnapshot.child("title").getValue(String.class));
-                        mContent.setText(dataSnapshot.child("content").getValue(String.class));
-                        mReporter.setText(dataSnapshot.child("reporter").getValue(String.class));
-                        mDate.setText(dataSnapshot.child("date").getValue(String.class));
-                        postUID = dataSnapshot.child("id").getValue(String.class);
-                    }
+                            mTitle.setText(dataSnapshot.child("title").getValue(String.class));
+                            mContent.setText(dataSnapshot.child("content").getValue(String.class));
+                            mReporter.setText(dataSnapshot.child("reporter").getValue(String.class));
+                            mDate.setText(dataSnapshot.child("date").getValue(String.class));
+                            postUID = dataSnapshot.child("id").getValue(String.class);
+                        }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.w(TAG, "loadJournals:onCancelled", databaseError.toException());
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.w(TAG, "loadJournals:onCancelled", databaseError.toException());
 
-                    }
-                };
-                userRef.addListenerForSingleValueEvent(valueEventListener);
+                        }
+                    };
+                    userRef.addListenerForSingleValueEvent(valueEventListener);
 
+
+                }
 
             }
-
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
     @Override

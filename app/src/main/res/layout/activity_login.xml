@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.godlife.followup.Login">
+    tools:context="com.godlife.followup.activities.Login">
 
     <LinearLayout
         android:id="@+id/linearLayout2"

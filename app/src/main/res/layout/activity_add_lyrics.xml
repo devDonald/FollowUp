@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddLyrics">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/songs_label_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Song Title"
+        android:background="@drawable/border"
+        android:textColorHint="@android:color/holo_blue_dark"
+        >
+        <EditText
+            android:id="@+id/add_song_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            android:inputType="textCapSentences"
+            android:imeOptions="actionNext"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/songs_label_one"
+        app:layout_constraintStart_toStartOf="@id/songs_label_one"
+        app:layout_constraintEnd_toEndOf="@id/songs_label_one"
+        android:id="@+id/songs_label_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full lyrics"
+        android:background="@drawable/border"
+        android:textColorHint="@android:color/holo_blue_dark"
+        >
+        <EditText
+            android:id="@+id/add_song_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            android:lines="8"
+            android:inputType="textMultiLine"
+            android:imeOptions="actionNext"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:layout_constraintTop_toBottomOf="@id/songs_label_two"
+        app:layout_constraintEnd_toEndOf="@id/songs_label_two"
+        app:layout_constraintStart_toStartOf="@id/songs_label_two"
+        android:id="@+id/songs_label_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Written By"
+        android:background="@drawable/border"
+        android:textColorHint="@android:color/holo_blue_dark"
+        >
+        <EditText
+            android:id="@+id/add_song_written_by"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            android:inputType="textCapWords"
+            android:imeOptions="actionDone"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/songs_label_three"
+        app:layout_constraintStart_toStartOf="@id/songs_label_three"
+        app:layout_constraintEnd_toEndOf="@id/songs_label_three"
+        android:background="@drawable/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_songs_submit"
+        android:text="Submit Lyrics"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -67,7 +67,7 @@ public class AddFirstTimers extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                                mDob.setText(dayOfMonth+ "-"+ (monthOfYear + 1)+ "-"+ year);
+                                mDob.setText(dayOfMonth+ "-"+ (monthOfYear + 1));
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -136,7 +136,7 @@ public class AddFirstTimers extends AppCompatActivity {
                     FirstTimersModel model = new FirstTimersModel(name, dob,gender, address,
                             email, phone, occupation, marital_status,bornAgain,
                             filled,supervisor,dateOfVisit);
-                    firstReference.child(id).setValue(model, new DatabaseReference.CompletionListener() {
+                    firstReference.child(dateOfVisit).child(id).setValue(model, new DatabaseReference.CompletionListener() {
                         @Override
                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                             if (databaseError!=null){

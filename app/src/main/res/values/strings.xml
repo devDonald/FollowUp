@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Follow Up</string>
+    <string name="app_name">God-Life Admin</string>
     <string name="prompt_email">Email</string>
     <string name="password_hint">Password</string>
     <string name="sign_up_text">Don\'t Have an account yet? Sign up here!</string>
@@ -28,18 +28,19 @@
 
     </string-array>
     <string-array name="church_units">
-        <item>Follow-Up</item>
-        <item>Media</item>
-        <item>Protocol</item>
-        <item>Technical</item>
-        <item>Sanctuary</item>
-        <item>Scribes</item>
-        <item>Outreach</item>
+        <item>Follow-Up Team</item>
+        <item>Media Team</item>
+        <item>Protocol Team</item>
+        <item>Technical Team</item>
+        <item>Sanctuary Team</item>
+        <item>Scribes Team</item>
+        <item>Outreach Team</item>
         <item>House of Judah</item>
-        <item>Beautification</item>
-        <item>Ushering</item>
+        <item>Beautification Team</item>
+        <item>UsheringTeam </item>
         <item>Children Dept</item>
-        <item>Treasury</item>
+        <item>Treasury Team</item>
+        <item>Prayer Team</item>
         <item>None</item>
 
     </string-array>
@@ -95,23 +96,28 @@
     <string name="detail_done">Done</string>
     <string name="member_search">Search</string>
     <string-array name="locations">
+
         <item>Location Tag</item>
         <item>Abattoir</item>
         <item>Angle-D</item>
+        <item>Angwan Rogo</item>
         <item>Angwan Rukuba</item>
         <item>Apata</item>
         <item>Barkin Ladi</item>
         <item>Bauchi Road</item>
         <item>British</item>
         <item>Bukuru</item>
+        <item>Bukuru Lowcost</item>
         <item>Busa Buje</item>
-        <item>Church Axis</item>
         <item>Dadin Kowa</item>
         <item>Dogon Karfe</item>
         <item>Farin Gada</item>
         <item>Federal Lowcost</item>
+        <item>Phototech</item>
         <item>Gada Biyu</item>
+        <item>Gold &amp; Base</item>
         <item>G.R.A</item>
+        <item>Hwolshe</item>
         <item>JUTH</item>
         <item>Lamingo</item>
         <item>Lamingo Road</item>
@@ -126,12 +132,19 @@
         <item>Terminus</item>
         <item>Tudun Wada</item>
         <item>UTAN</item>
+        <item>Village Hostel</item>
+        <item>Yingi</item>
         <item>Zarmaganda</item>
     </string-array>
 
     <string-array name="options">
         <item>Yes</item>
         <item>No</item>
+    </string-array>
+    <string-array name="visited">
+        <item>Visited or Not</item>
+        <item>Visited</item>
+        <item>Not Visited</item>
     </string-array>
 
     <string name="password_recovery">Recover your password</string>
@@ -153,5 +166,63 @@
     <string name="delete_report">Delete Report</string>
     <string name="update_report">Update Report</string>
     <string name="dov">Date of Visit</string>
+    <string name="visited">Visited?: </string>
+    <string name="title_activity_join_church">JoinChurch</string>
 
+
+    <string-array name="days">
+        <item>DD</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+
+    </string-array>
+
+    <string-array name="months">
+        <item>MM</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+
+    </string-array>
+    <string name="title_activity_timers_home">First Timers</string>
+    <string name="title_activity_join_church_minna">Add Minna Members</string>
+    <string name="title_activity_join_church_zaria">Add Zaria Members</string>
 </resources>

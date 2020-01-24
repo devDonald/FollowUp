@@ -6,16 +6,16 @@
         android:id="@+id/action_delete_report"
         android:title="@string/delete_report"
         android:orderInCategory="100"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_update_report"
         android:title="@string/update_report"
         android:orderInCategory="100"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_done_report"
         android:title="@string/detail_done"
         android:orderInCategory="100"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
 </menu>

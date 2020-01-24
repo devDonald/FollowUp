@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_add_josmembers"
+        android:orderInCategory="100"
+        android:title="Add Jos Members"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_add_zariamembers"
+        android:orderInCategory="100"
+        android:title="Add Minna Members"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_add_minnamembers"
+        android:orderInCategory="100"
+        android:title="Add Zaria Members"
+        app:showAsAction="ifRoom" />
+</menu>
