@@ -5,10 +5,6 @@
     <color name="colorAccent">#F76A0B</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="gray_text">#403d3d</color>
-    <color name="secondary_text">#727272</color>
-    <color name="icons">#FFFFFF</color>
-    <color name="divider">#B6B6B6</color>
     <color name="black">#000000</color>
     <color name="black_overlay">#66000000</color>
     <color name="font_color">#313131</color>

@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,10 +41,8 @@ public class ServiceSummary extends AppCompatActivity {
     private EditText et_tag, et_minister, et_nugget;
     private Button submit_summary;
     private KProgressHUD hud;
-    private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
-    private FirebaseFirestore serviceDB;
-    private FirebaseFirestoreSettings settings;
+    private DatabaseReference serviceDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +62,6 @@ public class ServiceSummary extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
         serviceTime= currentTime.format(calendar.getTime());
 
-        SimpleDateFormat getdate = new SimpleDateFormat("ddMMyyyyhhmmssSSS");
-        timestamp = getdate.format(new Date());
 
 
 
@@ -79,14 +76,8 @@ public class ServiceSummary extends AppCompatActivity {
                 .setAutoDismiss(true);
 
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
 
-        serviceDB = FirebaseFirestore.getInstance();
-        settings = new FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(true)
-                .setTimestampsInSnapshotsEnabled(true)
-                .build();
-        serviceDB.setFirestoreSettings(settings);
+        serviceDB = FirebaseDatabase.getInstance().getReference().child("Updates");
 
 
         submit_summary.setOnClickListener(new View.OnClickListener() {
@@ -95,40 +86,37 @@ public class ServiceSummary extends AppCompatActivity {
                 service_tag = et_tag.getText().toString().trim();
                 service_minister= et_minister.getText().toString().trim();
                 service_nugget = et_nugget.getText().toString().trim();
+                final String id = serviceDB.push().getKey();
+
 
                 try {
 
                     if (!service_tag.isEmpty() && !service_minister.isEmpty()){
                         hud.show();
 
-                        Map<String, Object> data1 = new HashMap<>();
-                        data1.put("service_date", serviceDate);
-                        data1.put("service_time", serviceTime);
-                        data1.put("service_nugget", service_nugget);
-                        data1.put("service_minister", service_minister);
-                        data1.put("service_tag", service_tag);
-                        data1.put("time", FieldValue.serverTimestamp());
+                        ServiceModel model = new ServiceModel(service_tag,service_nugget,service_minister,serviceDate,serviceTime,id);
 
 
-                        serviceDB.collection("Updates")
-                                .add(data1)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        hud.dismiss();
+                        serviceDB.child(id).setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                hud.dismiss();
+                                serviceDB.child(id).child("time").setValue(ServerValue.TIMESTAMP);
+                                MDToast.makeText(ServiceSummary.this,"Posted",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
 
-                                        MDToast.makeText(ServiceSummary.this,"Posted",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
-                                        et_nugget.setText(" ");
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        hud.dismiss();
-                                        MDToast.makeText(getApplicationContext(), "Failed!",MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR).show();
+                                Calendar calendar = Calendar.getInstance();
+                                SimpleDateFormat currentTime = new SimpleDateFormat("hh:mm a");
+                                serviceTime= currentTime.format(calendar.getTime());
+                                et_nugget.setText(" ");
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                hud.dismiss();
+                                MDToast.makeText(getApplicationContext(), "Failed!",MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR).show();
 
-                                    }
-                                });
+                            }
+                        });
 
                     }
                 } catch (Exception e){

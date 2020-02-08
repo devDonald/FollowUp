@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +34,7 @@ public class AddLyrics extends AppCompatActivity {
     private EditText song_title, song_lyrics, written_by;
     private Button submit_lyrics;
     private KProgressHUD hud;
-    private FirebaseFirestore songsDB;
+    private DatabaseReference songsDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class AddLyrics extends AppCompatActivity {
                 fullLyrics= song_lyrics.getText().toString().trim();
                 songauthor = written_by.getText().toString().trim();
 
-                songsDB = FirebaseFirestore.getInstance();
+                songsDB = FirebaseDatabase.getInstance().getReference().child("Lyrics");
 
 
                 if (!songtitle.isEmpty() && !fullLyrics.isEmpty() && !songauthor.isEmpty()){
@@ -73,32 +74,23 @@ public class AddLyrics extends AppCompatActivity {
                     hud.show();
 
                     try {
-                        Map<String,Object> lyrics = new HashMap<>();
+                        String id = songsDB.push().getKey();
 
-                        lyrics.put("songTitle",songtitle);
-                        lyrics.put("fullLyrics",fullLyrics);
-                        lyrics.put("writtenBy", songauthor);
+                       LyricsModel model = new LyricsModel(songtitle,fullLyrics,songauthor,id);
 
-
-                        songsDB.collection("Lyrics")
-                                .add(lyrics)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        hud.dismiss();
-                                        MDToast.makeText(AddLyrics.this,"Lyrics Successfully Added",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
-                                        Intent toAdmin = new Intent(AddLyrics.this, MainActivity.class);
-                                        startActivity(toAdmin);
-                                        finish();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        MDToast.makeText(AddLyrics.this,"Failed", MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
-
-                                    }
-                                });
+                       songsDB.child(id).setValue(model)
+                               .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                   @Override
+                                   public void onComplete(@NonNull Task<Void> task) {
+                                       hud.dismiss();
+                                       if (task.isSuccessful()){
+                                           MDToast.makeText(AddLyrics.this,"Lyrics Successfully Added",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
+                                           Intent toAdmin = new Intent(AddLyrics.this, MainActivity.class);
+                                           startActivity(toAdmin);
+                                           finish();
+                                       }
+                                   }
+                               });
 
                     } catch (Exception e){
                         e.printStackTrace();

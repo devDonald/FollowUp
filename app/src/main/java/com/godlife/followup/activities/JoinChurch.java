@@ -59,12 +59,12 @@ import java.io.ByteArrayOutputStream;
 public class JoinChurch extends AppCompatActivity {
     private static final int GALLERY_REQUEST = 10;
     private CountryCodePicker ccp;
-    private String country = "Nigeria", state, surname, fname, oname=" ",gender, marital, phone, address;
-    private String email, occupation, d_day, d_month, uid;
+    private String country = "Nigeria", state, surname, fname, oname, gender, marital, phone, address;
+    private String email, occupation, d_day, d_month, uid, unit, my_location;
     private EditText etSurname, etFname, etOthernames, etPhone, etEmail, etOccupation,etAddress;
     private RadioGroup rgGender, rgMarital;
-    private Spinner join_states,dob_day, dob_month;
-    private FirebaseFirestore userDb;
+    private Spinner join_states,dob_day, dob_month, church_unit, location;
+    private DatabaseReference userDb;
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
     private TextView btDob;
@@ -101,6 +101,8 @@ public class JoinChurch extends AppCompatActivity {
         dob_month = findViewById(R.id.join_pick_date_month);
         pick_image =findViewById(R.id.pick_p_image);
         display_image=findViewById(R.id.display_pimage);
+        church_unit = findViewById(R.id.join_units);
+        location = findViewById(R.id.join_location);
 
         rgGender = findViewById(R.id.gender_group);
         rgMarital =findViewById(R.id.marital_group);
@@ -142,7 +144,7 @@ public class JoinChurch extends AppCompatActivity {
             }
         });
 
-        userDb = FirebaseFirestore.getInstance();
+        userDb = FirebaseDatabase.getInstance().getReference().child("Members");
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -198,6 +200,8 @@ public class JoinChurch extends AppCompatActivity {
                 occupation = etOccupation.getText().toString().trim();
                 d_day = dob_day.getItemAtPosition(dob_day.getSelectedItemPosition()).toString().trim();
                 d_month = dob_month.getItemAtPosition(dob_month.getSelectedItemPosition()).toString().trim();
+                my_location = location.getItemAtPosition(location.getSelectedItemPosition()).toString().trim();
+                unit = church_unit.getItemAtPosition(church_unit.getSelectedItemPosition()).toString().trim();
 
 
                 if (surname.isEmpty()){
@@ -217,7 +221,13 @@ public class JoinChurch extends AppCompatActivity {
                 } else if (marital.isEmpty()){
                     MDToast.makeText(JoinChurch.this, "Select a marital status",MDToast.TYPE_ERROR,MDToast.LENGTH_LONG).show();
 
-                } else {
+                } else if (my_location.matches("Location Tag")){
+                    MDToast.makeText(JoinChurch.this, "Select a valid location tag",MDToast.TYPE_ERROR,MDToast.LENGTH_LONG).show();
+
+                }else if (unit.matches("Select Church Department")){
+                    MDToast.makeText(JoinChurch.this, "Select a valid church unit",MDToast.TYPE_ERROR,MDToast.LENGTH_LONG).show();
+
+                }else {
                     try {
 
                         uploadData();
@@ -252,14 +262,14 @@ public class JoinChurch extends AppCompatActivity {
             if (imageUri!=null){
                 final StorageReference file = userPics.child("ProfileImages").child(phone).child(imageUri.getLastPathSegment());
 
-                display_image.setDrawingCacheEnabled(true);
-                display_image.buildDrawingCache();
-                Bitmap bitmap = display_image.getDrawingCache();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] data = baos.toByteArray();
+//                display_image.setDrawingCacheEnabled(true);
+//                display_image.buildDrawingCache();
+//                Bitmap bitmap = display_image.getDrawingCache();
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//                byte[] data = baos.toByteArray();
 
-                UploadTask uploadTask = file.putBytes(data);
+                UploadTask uploadTask = file.putFile(imageUri);
 
 
                 Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -277,31 +287,59 @@ public class JoinChurch extends AppCompatActivity {
                         hud.dismiss();
                         if (task.isSuccessful()) {
                             Uri downloadUrl = task.getResult();
+                            String id = userDb.push().getKey();
 
-                            MembersModel model = new MembersModel(fname,oname,surname,phone,marital,gender,state,country,
-                                    occupation,address,email,d_day,d_month,downloadUrl.toString(),uid,0);
+                            if (oname.isEmpty()){
+                                MembersModel model = new MembersModel(fname,surname,phone,marital,gender,state,country,
+                                        occupation,address,email,d_day,d_month,downloadUrl.toString(),uid, unit,my_location, 0);
 
-                            userDb.collection("Members")
-                                    .add(model)
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                        @Override
-                                        public void onSuccess(DocumentReference documentReference) {
+                                userDb.child(d_month).child(id).setValue(model)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
 
-                                            MDToast.makeText(JoinChurch.this,"Data Successfully Added",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
-                                            Intent toAdmin = new Intent(JoinChurch.this, MainActivity.class);
-                                            toAdmin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                            toAdmin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(toAdmin);
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
+                                                MDToast.makeText(JoinChurch.this,"Data Successfully Added",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
+                                                Intent toAdmin = new Intent(JoinChurch.this, MainActivity.class);
+                                                toAdmin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                toAdmin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(toAdmin);
+                                            }
+                                        })
 
-                                            MDToast.makeText(JoinChurch.this,"Data failed to add",MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                MDToast.makeText(JoinChurch.this,"Data failed to add",MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
 
-                                        }
-                                    });
+                                            }
+                                        });
+                            } else {
+
+                                MembersModel model = new MembersModel(fname,oname, surname,phone,marital,gender,state,country,
+                                        occupation,address,email,d_day,d_month,downloadUrl.toString(),uid, unit,my_location, 0);
+
+                                userDb.child(d_month).child(id).setValue(model)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+
+                                                MDToast.makeText(JoinChurch.this,"Data Successfully Added",MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
+                                                Intent toAdmin = new Intent(JoinChurch.this, MainActivity.class);
+                                                toAdmin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                toAdmin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(toAdmin);
+                                            }
+                                        })
+
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                MDToast.makeText(JoinChurch.this,"Data failed to add",MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
+
+                                            }
+                                        });
+                            }
+
 
 
                         }

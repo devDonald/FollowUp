@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -14,22 +15,24 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.godlife.followup.R;
+import com.godlife.followup.activities.AddArticle;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.valdesekamdem.library.mdtoast.MDToast;
 
 import java.util.Calendar;
 
 public class AddFirstTimers extends AppCompatActivity {
-    private EditText mName, mDob,mAddress,mEmail,mOccupation,mPhone,mSupervisor,mVisitDate;
+    private EditText mName, mDob,mAddress,mEmail,mOccupation,mPhone,mSupervisor,mVisitDate,mPrayer;
     private Spinner mGender, mBornAgain,mMStatus,mFilledSpirit;
     private Button submit;
 
     private DatabaseReference firstReference;
     private String id;
-    private ProgressDialog mProgress;
     private int mYear, mMonth, mDay, mmYear, mmMonth, mmDay;
+    private KProgressHUD hud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +52,17 @@ public class AddFirstTimers extends AppCompatActivity {
         mMStatus = findViewById(R.id.sp_first_status);
         mFilledSpirit = findViewById(R.id.sp_filled_with_holyghost);
         submit = findViewById(R.id.first_submit);
+        mPrayer = findViewById(R.id.et_first_prayer);
 
-        mProgress = new ProgressDialog(this);
-
+        hud = KProgressHUD.create(AddFirstTimers.this)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel("Please Wait")
+                .setDetailsLabel("Adding First Timer")
+                .setCancellable(true)
+                .setAnimationSpeed(2)
+                .setDimAmount(0.5f)
+                .setBackgroundColor(Color.BLACK)
+                .setAutoDismiss(true);
         firstReference = FirebaseDatabase.getInstance().getReference().child("FirstTimers");
 
         mDob.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +125,7 @@ public class AddFirstTimers extends AppCompatActivity {
                 final String filled = mFilledSpirit.getItemAtPosition(mFilledSpirit
                         .getSelectedItemPosition()).toString().trim();
                 final String dateOfVisit = mVisitDate.getText().toString().trim();
+                final String prayer_req = mPrayer.getText().toString().trim();
 
 
 
@@ -128,33 +140,40 @@ public class AddFirstTimers extends AppCompatActivity {
                 }else if (marital_status.equalsIgnoreCase("Marital Status")){
                     mSupervisor.setError("invald marital status");
                 } else{
-                    mProgress.setMessage("Adding first Timer...");
-                    mProgress.show();
 
-                    id = firstReference.push().getKey();
+                    hud.show();
 
-                    FirstTimersModel model = new FirstTimersModel(name, dob,gender, address,
-                            email, phone, occupation, marital_status,bornAgain,
-                            filled,supervisor,dateOfVisit);
-                    firstReference.child(dateOfVisit).child(id).setValue(model, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                            if (databaseError!=null){
-                                MDToast.makeText(AddFirstTimers.this,"data could not be saved",
-                                        MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
+                  try {
+                      id = firstReference.push().getKey();
 
-                            } else {
-                                MDToast.makeText(AddFirstTimers.this,"First timer added",
-                                        MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
+                      FirstTimersModel model = new FirstTimersModel(name, dob,gender, address,
+                              email, phone, occupation, marital_status,bornAgain,
+                              filled,supervisor,dateOfVisit, prayer_req);
+                      firstReference.child(dateOfVisit).child(id).setValue(model, new DatabaseReference.CompletionListener() {
+                          @Override
+                          public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
 
-                                mProgress.dismiss();
-                                Intent first_timers = new Intent(AddFirstTimers.this, FirstTimers.class);
-                                startActivity(first_timers);
-                                finish();
-                            }
-                        }
-                    });
+                              DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Dates");
+                              reference.child("dates").setValue(id);
+                              hud.dismiss();
+                              if (databaseError!=null){
+                                  MDToast.makeText(AddFirstTimers.this,"data could not be saved",
+                                          MDToast.LENGTH_LONG,MDToast.TYPE_ERROR).show();
 
+                              } else {
+                                  MDToast.makeText(AddFirstTimers.this,"First timer added",
+                                          MDToast.LENGTH_LONG,MDToast.TYPE_SUCCESS).show();
+
+                                  Intent first_timers = new Intent(AddFirstTimers.this, FirstTimers.class);
+                                  startActivity(first_timers);
+                                  finish();
+                              }
+                          }
+                      });
+
+                  } catch (Exception e){
+                      e.printStackTrace();
+                  }
                 }
             }
         });

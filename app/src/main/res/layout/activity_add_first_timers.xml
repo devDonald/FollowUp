@@ -181,32 +181,49 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/border_text"
-                android:layout_below="@+id/ll3"
-                android:orientation="horizontal"
-                android:id="@+id/ll5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ll5"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/border_text"
+                    android:layout_below="@+id/ll3"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:hint="@string/follower"
                     android:layout_height="wrap_content">
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/et_first_follower"
-                        android:hint="@string/follower"
+                        android:imeOptions="actionNext"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-            </LinearLayout>
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ll6"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_text"
                 android:layout_below="@+id/ll5"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:hint="@string/prayer_request"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="3"
+                    android:id="@+id/et_first_prayer"
+                    android:imeOptions="actionNext"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:layout_below="@+id/ll6"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/border_text"
@@ -225,7 +242,7 @@
                 android:layout_below="@+id/et_first_dov"
                 android:id="@+id/first_submit"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:textStyle="bold"

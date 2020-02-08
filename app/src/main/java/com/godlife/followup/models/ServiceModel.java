@@ -1,9 +1,18 @@
 package com.godlife.followup.models;
 
+import com.google.firebase.firestore.FieldValue;
+
 public class ServiceModel {
     private String service_tag, service_nugget, service_minister, service_date, service_time, time_stamp, id;
 
-    public ServiceModel() {
+    public ServiceModel(String service_tag, String service_nugget, String service_minister, String service_date, String service_time, String id) {
+
+        this.service_tag = service_tag;
+        this.service_nugget = service_nugget;
+        this.service_minister = service_minister;
+        this.service_date = service_date;
+        this.service_time = service_time;
+        this.id = id;
     }
 
     public ServiceModel(String service_tag, String service_nugget, String service_minister, String service_date,

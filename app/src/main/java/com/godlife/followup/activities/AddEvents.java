@@ -121,14 +121,14 @@ public class AddEvents extends AppCompatActivity {
         if (imageUri!=null){
             final StorageReference file = eventPics.child("EventPics").child(imageUri.getLastPathSegment());
 
-            addImage.setDrawingCacheEnabled(true);
-            addImage.buildDrawingCache();
-            Bitmap bitmap = addImage.getDrawingCache();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-            byte[] data = baos.toByteArray();
+//            addImage.setDrawingCacheEnabled(true);
+//            addImage.buildDrawingCache();
+//            Bitmap bitmap = addImage.getDrawingCache();
+//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//            byte[] data = baos.toByteArray();
 
-            UploadTask uploadTask = file.putBytes(data);
+            UploadTask uploadTask = file.putFile(imageUri);
 
 
             Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {

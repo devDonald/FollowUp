@@ -24,7 +24,7 @@
             android:textColor="@color/green"
             android:textSize="20sp"/>
 
-        <me.biubiubiu.justifytext.library.JustifyTextView
+        <TextView
             android:background="@drawable/border_text"
             android:textColor="@color/black"
             android:layout_width="match_parent"

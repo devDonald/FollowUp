@@ -2,15 +2,14 @@ package com.godlife.followup.models;
 
 public class MembersModel {
     private String firstName, otherNames, surname, phone, marital, gender, state, country, occupation, address;
-    private String email, DD, MM, photo, uid;
+    private String email, DD, MM, photo, uid, unit, location;
     private int likes;
 
     public MembersModel() {
     }
 
-    public MembersModel(String firstName, String otherNames, String surname, String phone, String marital,
-                        String gender, String state, String country, String occupation, String address, String email,
-                        String DD, String MM, String photo, String uid, int likes) {
+
+    public MembersModel(String firstName, String otherNames, String surname, String phone, String marital, String gender, String state, String country, String occupation, String address, String email, String DD, String MM, String photo, String uid, String unit, String location, int likes) {
         this.firstName = firstName;
         this.otherNames = otherNames;
         this.surname = surname;
@@ -26,7 +25,28 @@ public class MembersModel {
         this.MM = MM;
         this.photo = photo;
         this.uid = uid;
-        this.likes=likes;
+        this.unit = unit;
+        this.location = location;
+        this.likes = likes;
+    }
+    public MembersModel(String firstName, String surname, String phone, String marital, String gender, String state, String country, String occupation, String address, String email, String DD, String MM, String photo, String uid, String unit, String location, int likes) {
+        this.firstName = firstName;
+        this.surname = surname;
+        this.phone = phone;
+        this.marital = marital;
+        this.gender = gender;
+        this.state = state;
+        this.country = country;
+        this.occupation = occupation;
+        this.address = address;
+        this.email = email;
+        this.DD = DD;
+        this.MM = MM;
+        this.photo = photo;
+        this.uid = uid;
+        this.unit = unit;
+        this.location = location;
+        this.likes = likes;
     }
 
     public String getFirstName() {
@@ -155,5 +175,21 @@ public class MembersModel {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

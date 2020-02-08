@@ -31,7 +31,6 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/dp"
-
                 />
 
             <ImageButton
@@ -268,9 +267,17 @@
                 android:entries="@array/locations"
                 />
 
+            <Spinner
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/join_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/join_units"
+                android:entries="@array/church_units"
+                />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="10dp"
-                android:layout_below="@id/join_state"
+                android:layout_below="@id/join_units"
                 android:id="@+id/label_fourth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
