@@ -47,6 +47,9 @@ public class Members extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memberss);
 
+        allMembers_RV = findViewById(R.id.members_recycler);
+
+
 
     }
 
@@ -109,9 +112,9 @@ public class Members extends AppCompatActivity {
     }
 
 
-    public void showBirthdays(){
+    public void showMenbers(){
 
-        Query firebaseSearchQuery = membersDb.orderByChild("dd");
+        Query firebaseSearchQuery = membersDb.orderByChild("firstName");
 
         firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<MembersModel, MembersViewHolder>(
                 MembersModel.class,
@@ -156,6 +159,5 @@ public class Members extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        showBirthdays();
     }
 }

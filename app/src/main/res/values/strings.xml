@@ -210,4 +210,12 @@
     <string name="title_activity_join_church_minna">Add Minna Members</string>
     <string name="title_activity_join_church_zaria">Add Zaria Members</string>
     <string name="prayer_request">Prayer Request</string>
+
+    <string-array name="report_tag">
+        <item>Select Report Tag</item>
+        <item>Follow Up</item>
+        <item>Outreach Team</item>
+        <item>Leaders Report</item>
+        <item>Pastors Report</item>
+    </string-array>
 </resources>

@@ -79,7 +79,7 @@
             android:layout_marginStart="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Occupation"
+            android:text="Location"
             android:layout_below="@id/member_show_marital"
             android:id="@+id/member_show_location"
             android:textSize="15sp"
